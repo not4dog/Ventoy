@@ -2402,6 +2402,8 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
     char *buf = NULL;
     grub_file_t file;
     VTOY_JSON *json = NULL;
+    int offset = 0;
+    grub_utf8 *code = NULL;
     
     (void)ctxt;
     (void)argc;
@@ -2436,8 +2438,6 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
         return 1;
     }
 
-    
-
     ret = vtoy_json_parse(json, buf);
     if (ret)
     {
@@ -2447,6 +2447,17 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
         debug("Failed to parse json string %d\n", ret);
         grub_free(buf);
         return 1;
+    }
+
+    code = (grub_utf8 *)buf;
+    if(code[0] == 0XEF && code[1] == 0XBB && code[2] == 0XBF) // UTF-8의 Signature Hex Code
+    {
+        offset = 3;
+    }
+    else if((code[0] == 0XFF && code[1] == 0XFE) || (code[0] == 0XFE && code[1] == 0XFF)) // 유니코드 (Little endian, Big endian)
+    {
+        grub_env_set("VTOY_PLUGIN_SYNTAX_ERROR", "1");
+        grub_env_export("VTOY_PLUGIN_SYNTAX_ERROR");
     }
 
     ventoy_parse_plugin_config(json->pstChild, args[0]);
