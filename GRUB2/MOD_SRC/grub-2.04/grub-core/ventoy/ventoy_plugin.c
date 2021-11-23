@@ -2450,11 +2450,11 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
     }
 
     code = (grub_utf8 *)buf;
-    if(code[0] == 0XEF && code[1] == 0XBB && code[2] == 0XBF) // UTF-8의 Signature Hex Code
+    if(code[0] == 0xEF && code[1] == 0xBB && code[2] == 0xBF) // UTF-8의 BOM Signature Hex Code
     {
-        offset = 3;
+        offset = 3; 
     }
-    else if((code[0] == 0XFF && code[1] == 0XFE) || (code[0] == 0XFE && code[1] == 0XFF)) // 유니코드 (Little endian, Big endian)
+    else if((code[0] == 0xFF && code[1] == 0XFE) || (code[0] == 0xFE && code[1] == 0xFF)) // 유니코드 (Little endian, Big endian)
     {
         grub_env_set("VTOY_PLUGIN_SYNTAX_ERROR", "1");
         grub_env_export("VTOY_PLUGIN_SYNTAX_ERROR");
