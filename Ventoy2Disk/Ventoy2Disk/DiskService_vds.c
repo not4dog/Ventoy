@@ -449,6 +449,14 @@ static const char *GetVdsError(DWORD error_code)
 		return "The volume is not formattable.";
 	case 0x80042918:	// VDS_E_COMPRESSION_NOT_SUPPORTED
 		return "The specified file system does not support compression.";
+	case 0x0004245A:	// VDS_S_IA64_BOOT_MIRRORED_TO_MBR -B793170 이계혁
+		return "You will not be able to boot your machine from the secondary plex.";
+	case 0x80042460:	// VDS_E_REPAIR_VOLUMESTATE -B793170 이계혁
+		return "To repair a volume, both the volume and plex must be online";	
+	case 0x80042466:	// VDS_E_EXTEND_FILE_SYSTEM_FAILED -B793170 이계혁
+		return "The file system failed to extend.";	
+	case 0x80042515:	// VDS_E_EXTENT_EXCEEDS_DISK_FREE_SPACE -B793170 이계혁
+		return "The specified disk extent size exceeds the size of free disk space.";		
 	default:
 		return NULL;
 	}
