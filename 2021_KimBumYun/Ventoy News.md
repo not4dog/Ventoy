@@ -7,7 +7,7 @@
 2. Before non-destructive installation in Windows, use chkdsk to fix the volume if needed.<br>
 3. Add dir option in menu_tip plugin.<br>
 Notes - https://www.ventoy.net/en/plugin_menutip.html<br>
-4. languages.json update<br>
+4. languages.json update<br><br>
 
 * 2021/11/12 - 1.0.60 release<br>
 1. Fix some BUGs when do non-destructive installation with GPT disk. Now 1.0.59 release is deprecated.<br>
@@ -17,12 +17,12 @@ Notes - https://www.ventoy.net/en/doc_non_destructive.html<br>
 4. Document : About GRUB2 Mode<br>
 About GRUB2 : https://www.ventoy.net/en/doc_grub2boot.html<br>
 5. Help information language update<br>
-6. languages.json update<br>
+6. languages.json update<br><br>
 
 * 2021/11/10 - 1.0.59 release<br>
 1. Experimental support for non-destructive installation on Windows.<br>
 Notes - https://www.ventoy.net/en/doc_non_destructive.html<br>
-2. Show a warning message if ventoy.json is in UCS-2 encoding<br>
+2. Show a warning message if ventoy.json is in UCS-2 encoding<br><br>
 
 * 2021/11/06 - 1.0.58 release<br>
  1. Add Ventoy2Disk_X64.exe/Ventoy2Disk_ARM.exe/Ventoy2Disk_ARM64.exe<br>
