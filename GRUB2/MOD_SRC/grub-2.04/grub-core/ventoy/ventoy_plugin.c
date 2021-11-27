@@ -1524,26 +1524,26 @@ static int ventoy_plugin_menutip_check(VTOY_JSON *json, const char *isodisk)
         {
             if(grub_strchr(path, '*'))
             {
-                grub_printf("image: <%s> [*]\n", path);
+                grub_printf("image: <%s> [ * ]\n", path);
             }
             else if (ventoy_is_file_exist("%s%s", isodisk, path))
             {
-                grub_printf("image: <%s> [ok]\n", path);
+                grub_printf("image: <%s> [ OK ]\n", path);
             }
             else
             {
-                grub_printf("image: <%s> [Not Exist]\n", path);
+                grub_printf("image: <%s> [ NOT EXIST ]\n", path);
             }
         }
         else
         {
             if(ventoy_is_dir_exist("%s%s", isodisk, path))
             {
-                grub_printf("dir: <%s> [ok]\n", path);
+                grub_printf("dir: <%s> [ OK ]\n", path);
             }
             else
             {
-                grub_printf("dir: <%s> [Not Exist]\n", path);
+                grub_printf("dir: <%s> [NOT EXIST]\n", path);
             }
         }
 

@@ -1866,7 +1866,7 @@ static int ventoy_collect_img_files(const char *filename, const struct grub_dirh
 
             img->alias = ventoy_plugin_get_menu_alias(vtoy_alias_image_file, img->path);
 
-            tip = ventoy_plugin_get_menu_tip(vtoy_memo_image_file, img->path)
+            tip = ventoy_plugin_get_menu_tip(vtoy_memo_image_file, img->path);
             if (tip)
             {
                 img->tip1 = tip->tip1;
