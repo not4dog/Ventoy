@@ -406,6 +406,8 @@ static const char *g_ventoy_cur_img_path = NULL;
 static void menu_set_chosen_tip(grub_menu_t menu, int entry)
 {
     img_info *img;
+    int m;
+    iso_tip *tip;
     grub_menu_entry_t e = grub_menu_get_entry (menu, entry);
 
     g_ventoy_tip_msg1 = g_ventoy_tip_msg2 = NULL;
@@ -418,6 +420,25 @@ static void menu_set_chosen_tip(grub_menu_t menu, int entry)
             g_ventoy_tip_msg2 = img->tip2;
             g_ventoy_cur_img_path = img->path;
         }
+    }
+    else if (e && e->id && grub_strncmp(e->id, "DIR_", 4) == 0) 
+    {
+      for(m=0; m < e->args; m++)
+      {
+        if(e->args[m] && grub_strncmp(e->args[m], "VMEMO_", 6) == 0)
+        {
+          break;
+        }
+      }
+      if(m < e->argc)
+      {
+        tip = (iso_memo *)(void *)grub_strtoul(e->args[m] + 6, NULL, 16);
+        if(tip)
+        {
+          g_ventoy_tip_msg1 = tip->tip1;
+          g_ventoy_tip_msg2 = tip->tip2;
+        }
+      }
     }
 }
 
