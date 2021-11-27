@@ -2438,7 +2438,6 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
         return 1;
     }
 
-    ret = vtoy_json_parse(json, buf);
     if (ret)
     {
         grub_env_set("VTOY_PLUGIN_SYNTAX_ERROR", "1");
@@ -2458,7 +2457,17 @@ grub_err_t ventoy_cmd_load_plugin(grub_extcmd_context_t ctxt, int argc, char **a
     {
         grub_env_set("VTOY_PLUGIN_SYNTAX_ERROR", "1");
         grub_env_export("VTOY_PLUGIN_SYNTAX_ERROR");
+
+        grub_env_set("VTOY_PLUGIN_ENCODE_ERROR", "1");
+        grub_env_export("VTOY_PLUGIN_ENCODE_ERROR");
+
+        debug("Failed to parse json string %d\n", ret);
+        grub_free(buf);
+
+        return 1;
     }
+    
+    ret = vtoy_json_parse(json, buf);
 
     ventoy_parse_plugin_config(json->pstChild, args[0]);
 
