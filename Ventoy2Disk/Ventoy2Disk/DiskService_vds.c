@@ -456,7 +456,7 @@ static const char *GetVdsError(DWORD error_code)
 	case 0x80042466:	// VDS_E_EXTEND_FILE_SYSTEM_FAILED -B793170 이계혁
 		return "The file system failed to extend.";	
 	case 0x80042515:	// VDS_E_EXTENT_EXCEEDS_DISK_FREE_SPACE -B793170 이계혁
-		return "The specified disk extent size exceeds the size of free disk space.";		
+		return "The specified disk extent size exceeds the size of free disk space";		
 	default:
 		return NULL;
 	}
