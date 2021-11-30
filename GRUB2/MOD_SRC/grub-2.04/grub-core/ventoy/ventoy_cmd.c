@@ -2710,8 +2710,7 @@ static grub_uint32_t ventoy_get_bios_eltorito_rba(grub_file_t file, grub_uint32_
     grub_file_seek(file, sector * 2048);
     grub_file_read(file, buf, sizeof(buf));
 
-    if (buf[0] == 0x01 && buf[1] == 0x00 && 
-        buf[30] == 0x55 && buf[31] == 0xaa && buf[32] == 0x88)
+    if (buf[0] == 0x01 && buf[1] == 0x00 && buf[30] == 0x55 && buf[31] == 0xaa && buf[32] == 0x88)
     {
         return *((grub_uint32_t *)(buf + 40));
     }
