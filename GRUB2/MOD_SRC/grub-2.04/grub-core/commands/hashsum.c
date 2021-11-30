@@ -308,33 +308,33 @@ GRUB_MOD_INIT(hashsum)
 			      /* TRANSLATORS: "hash checksum" is just to
 				 be a bit more precise, you can treat it as
 				 just "hash".  */
-			      N_("Compute or check hash checksum."),
+			      N_("hash Compute or check hash checksum."),
 			      options);
   cmd_md5 = grub_register_extcmd ("md5sum", grub_cmd_hashsum, 0,
 				  N_("[-c FILE [-p PREFIX]] "
 				     "[FILE1 [FILE2 ...]]"),
-				  N_("Compute or check hash checksum."),
+				  N_("md5 Compute or check hash checksum."),
 				  options);
   cmd_sha1 = grub_register_extcmd ("sha1sum", grub_cmd_hashsum, 0,
 				   N_("[-c FILE [-p PREFIX]] "
 				      "[FILE1 [FILE2 ...]]"),
-				   N_("Compute or check hash checksum."),
+				   N_("sha1 Compute or check hash checksum."),
 				   options);
   cmd_sha256 = grub_register_extcmd ("sha256sum", grub_cmd_hashsum, 0,
 				     N_("[-c FILE [-p PREFIX]] "
 					"[FILE1 [FILE2 ...]]"),
-				     N_("Compute or check hash checksum."),
+				     N_("sha256 Compute or check hash checksum."),
 				     options);
   cmd_sha512 = grub_register_extcmd ("sha512sum", grub_cmd_hashsum, 0,
 				     N_("[-c FILE [-p PREFIX]] "
 					"[FILE1 [FILE2 ...]]"),
-				     N_("Compute or check hash checksum."),
+				     N_("sha512 Compute or check hash checksum."),
 				     options);
 
   cmd_crc = grub_register_extcmd ("crc", grub_cmd_hashsum, 0,
 				     N_("[-c FILE [-p PREFIX]] "
 					"[FILE1 [FILE2 ...]]"),
-				     N_("Compute or check hash checksum."),
+				     N_("crc Compute or check hash checksum."),
 				     options);
 }
 
